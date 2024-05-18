@@ -1151,8 +1151,8 @@ EOT
 function network() {
     print_step "network()"
 
-    pacman_install "networkmanager"
-    arch-chroot "${MNT_DIR}" systemctl enable NetworkManager.service
+    pacman_install "iwd"
+    arch-chroot "${MNT_DIR}" systemctl enable iwd.service
 }
 
 function virtualbox() {
@@ -1889,7 +1889,6 @@ function main() {
     fi
     if [ -n "$DESKTOP_ENVIRONMENT" ]; then
         execute_step "desktop_environment"
-        execute_step "display_manager"
     fi
     execute_step "packages"
     if [ "$PROVISION" == "true" ]; then
