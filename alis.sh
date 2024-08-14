@@ -206,7 +206,7 @@ function check_variables() {
     check_variables_list "BOOTLOADER" "$BOOTLOADER" "auto grub refind systemd efistub" "true" "true"
     check_variables_boolean "SECURE_BOOT" "$SECURE_BOOT"
     check_variables_list "CUSTOM_SHELL" "$CUSTOM_SHELL" "bash zsh dash fish" "true" "true"
-    check_variables_list "DESKTOP_ENVIRONMENT" "$DESKTOP_ENVIRONMENT" "gnome kde xfce mate cinnamon lxde i3-wm i3-gaps deepin budgie bspwm awesome qtile openbox leftwm dusk hyprland-git" "false" "true"
+    #check_variables_list "DESKTOP_ENVIRONMENT" "$DESKTOP_ENVIRONMENT" "gnome kde xfce mate cinnamon lxde i3-wm i3-gaps deepin budgie bspwm awesome qtile openbox leftwm dusk hyprland-git" "false" "true"
     #check_variables_list "DISPLAY_MANAGER" "$DISPLAY_MANAGER" "auto gdm sddm lightdm lxdm" "true" "true"
     check_variables_boolean "PACKAGES_MULTILIB" "$PACKAGES_MULTILIB"
     check_variables_boolean "PACKAGES_INSTALL" "$PACKAGES_INSTALL"
@@ -1153,6 +1153,8 @@ function network() {
 
     pacman_install "iwd"
     arch-chroot "${MNT_DIR}" systemctl enable iwd.service
+    pacman_install "systemd-resolved"
+    arch-chroot "${MNT_DIR}" systemctl enable resoved.service
 }
 
 function virtualbox() {
