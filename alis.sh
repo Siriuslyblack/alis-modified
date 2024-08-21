@@ -1153,8 +1153,6 @@ function network() {
 
     pacman_install "iwd"
     arch-chroot "${MNT_DIR}" systemctl enable iwd.service
-    pacman_install "systemd-resolved"
-    arch-chroot "${MNT_DIR}" systemctl enable resoved.service
 }
 
 function virtualbox() {
